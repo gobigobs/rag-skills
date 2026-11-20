@@ -1,0 +1,944 @@
+{
+  "meta": {
+    "project": "rag-skills",
+    "source_project": "rag-doc-qa (Gopi's real RAG eval work)",
+    "note": "Summary only. Full per-question rows live in the source project's eval_results_v*.json. Answer-level local-trial scores are deliberately NOT included (small-model trial, noisy judge)."
+  },
+  "v2": {
+    "description": "21 scored questions + 3 unanswerable controls, 3 docs (~2,500 words), 2026-10-17",
+    "scored": 21,
+    "controls": 3,
+    "docs": 3,
+    "chunkings": {
+      "A_current_500_100": {
+        "chunk_size": 500,
+        "overlap": 100,
+        "n_chunks": 8,
+        "retrievers": {
+          "tfidf": {
+            "accuracy": 0.714,
+            "hits": 15,
+            "scored": 21,
+            "mrr": 0.831,
+            "avg_margin": 0.117,
+            "mean_hit_score": 0.2302,
+            "mean_control_score": 0.1469,
+            "hit_control_gap": 0.0833,
+            "mean_latency_ms": 0.49
+          },
+          "bm25": {
+            "accuracy": 0.81,
+            "hits": 17,
+            "scored": 21,
+            "mrr": 0.873,
+            "avg_margin": 2.594,
+            "mean_hit_score": 5.634,
+            "mean_control_score": 2.7906,
+            "hit_control_gap": 2.8434,
+            "mean_latency_ms": 0.15
+          },
+          "sbert": {
+            "accuracy": 0.952,
+            "hits": 20,
+            "scored": 21,
+            "mrr": 0.976,
+            "avg_margin": 0.158,
+            "mean_hit_score": 0.4072,
+            "mean_control_score": 0.1486,
+            "hit_control_gap": 0.2586,
+            "mean_latency_ms": 21.5
+          },
+          "hybrid": {
+            "accuracy": 0.905,
+            "hits": 19,
+            "scored": 21,
+            "mrr": 0.952,
+            "avg_margin": 0.0,
+            "mean_hit_score": 0.0326,
+            "mean_control_score": 0.0319,
+            "hit_control_gap": 0.0007,
+            "mean_latency_ms": 22.81
+          },
+          "rerank": {
+            "accuracy": 0.905,
+            "hits": 19,
+            "scored": 21,
+            "mrr": 0.94,
+            "avg_margin": 5.301,
+            "mean_hit_score": -1.4699,
+            "mean_control_score": -11.2387,
+            "hit_control_gap": 9.7688,
+            "mean_latency_ms": 934.35
+          }
+        }
+      },
+      "B_small_250_50": {
+        "chunk_size": 250,
+        "overlap": 50,
+        "n_chunks": 16,
+        "retrievers": {
+          "tfidf": {
+            "accuracy": 0.762,
+            "hits": 16,
+            "scored": 21,
+            "mrr": 0.829,
+            "avg_margin": 0.097,
+            "mean_hit_score": 0.2383,
+            "mean_control_score": 0.1403,
+            "hit_control_gap": 0.0981,
+            "mean_latency_ms": 0.46
+          },
+          "bm25": {
+            "accuracy": 0.81,
+            "hits": 17,
+            "scored": 21,
+            "mrr": 0.873,
+            "avg_margin": 2.82,
+            "mean_hit_score": 7.5521,
+            "mean_control_score": 3.233,
+            "hit_control_gap": 4.319,
+            "mean_latency_ms": 0.28
+          },
+          "sbert": {
+            "accuracy": 0.952,
+            "hits": 20,
+            "scored": 21,
+            "mrr": 0.976,
+            "avg_margin": 0.143,
+            "mean_hit_score": 0.4526,
+            "mean_control_score": 0.1703,
+            "hit_control_gap": 0.2823,
+            "mean_latency_ms": 30.35
+          },
+          "hybrid": {
+            "accuracy": 1.0,
+            "hits": 21,
+            "scored": 21,
+            "mrr": 1.0,
+            "avg_margin": 0.001,
+            "mean_hit_score": 0.0325,
+            "mean_control_score": 0.0313,
+            "hit_control_gap": 0.0012,
+            "mean_latency_ms": 37.92
+          },
+          "rerank": {
+            "accuracy": 0.905,
+            "hits": 19,
+            "scored": 21,
+            "mrr": 0.952,
+            "avg_margin": 4.387,
+            "mean_hit_score": -1.447,
+            "mean_control_score": -11.1642,
+            "hit_control_gap": 9.7172,
+            "mean_latency_ms": 1343.54
+          }
+        }
+      }
+    }
+  },
+  "v3": {
+    "description": "90-question stress test: 80 scored (16 each direct / paraphrase / multi-hop / adversarial-negation / ambiguous) + 10 controls, same 3 docs",
+    "scored": 80,
+    "controls": 10,
+    "docs": 3,
+    "chunkings": {
+      "A_current_500_100": {
+        "chunk_size": 500,
+        "overlap": 100,
+        "n_chunks": 8,
+        "retrievers": {
+          "tfidf": {
+            "accuracy": 0.825,
+            "hits": 66,
+            "scored": 80,
+            "mrr": 0.898,
+            "avg_margin": 0.091,
+            "mean_hit_score": 0.205,
+            "mean_control_score": 0.1393,
+            "hit_control_gap": 0.0657,
+            "mean_latency_ms": 0.42,
+            "by_type": {
+              "direct": {
+                "hits": 15,
+                "scored": 16,
+                "accuracy": 0.938
+              },
+              "paraphrase": {
+                "hits": 16,
+                "scored": 16,
+                "accuracy": 1.0
+              },
+              "multi-hop": {
+                "hits": 11,
+                "scored": 16,
+                "accuracy": 0.688
+              },
+              "adversarial": {
+                "hits": 16,
+                "scored": 16,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 8,
+                "scored": 16,
+                "accuracy": 0.5
+              }
+            }
+          },
+          "bm25": {
+            "accuracy": 0.738,
+            "hits": 59,
+            "scored": 80,
+            "mrr": 0.855,
+            "avg_margin": 2.441,
+            "mean_hit_score": 5.7061,
+            "mean_control_score": 2.3517,
+            "hit_control_gap": 3.3544,
+            "mean_latency_ms": 0.12,
+            "by_type": {
+              "direct": {
+                "hits": 15,
+                "scored": 16,
+                "accuracy": 0.938
+              },
+              "paraphrase": {
+                "hits": 12,
+                "scored": 16,
+                "accuracy": 0.75
+              },
+              "multi-hop": {
+                "hits": 10,
+                "scored": 16,
+                "accuracy": 0.625
+              },
+              "adversarial": {
+                "hits": 16,
+                "scored": 16,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 6,
+                "scored": 16,
+                "accuracy": 0.375
+              }
+            }
+          },
+          "sbert": {
+            "accuracy": 0.887,
+            "hits": 71,
+            "scored": 80,
+            "mrr": 0.93,
+            "avg_margin": 0.107,
+            "mean_hit_score": 0.4017,
+            "mean_control_score": 0.1601,
+            "hit_control_gap": 0.2416,
+            "mean_latency_ms": 31.14,
+            "by_type": {
+              "direct": {
+                "hits": 16,
+                "scored": 16,
+                "accuracy": 1.0
+              },
+              "paraphrase": {
+                "hits": 14,
+                "scored": 16,
+                "accuracy": 0.875
+              },
+              "multi-hop": {
+                "hits": 14,
+                "scored": 16,
+                "accuracy": 0.875
+              },
+              "adversarial": {
+                "hits": 16,
+                "scored": 16,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 11,
+                "scored": 16,
+                "accuracy": 0.688
+              }
+            }
+          },
+          "hybrid": {
+            "accuracy": 0.825,
+            "hits": 66,
+            "scored": 80,
+            "mrr": 0.897,
+            "avg_margin": 0.001,
+            "mean_hit_score": 0.0326,
+            "mean_control_score": 0.0322,
+            "hit_control_gap": 0.0004,
+            "mean_latency_ms": 25.12,
+            "by_type": {
+              "direct": {
+                "hits": 16,
+                "scored": 16,
+                "accuracy": 1.0
+              },
+              "paraphrase": {
+                "hits": 14,
+                "scored": 16,
+                "accuracy": 0.875
+              },
+              "multi-hop": {
+                "hits": 12,
+                "scored": 16,
+                "accuracy": 0.75
+              },
+              "adversarial": {
+                "hits": 16,
+                "scored": 16,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 8,
+                "scored": 16,
+                "accuracy": 0.5
+              }
+            }
+          },
+          "rerank": {
+            "accuracy": 0.938,
+            "hits": 75,
+            "scored": 80,
+            "mrr": 0.964,
+            "avg_margin": 4.668,
+            "mean_hit_score": -2.2603,
+            "mean_control_score": -9.5819,
+            "hit_control_gap": 7.3216,
+            "mean_latency_ms": 615.77,
+            "by_type": {
+              "direct": {
+                "hits": 16,
+                "scored": 16,
+                "accuracy": 1.0
+              },
+              "paraphrase": {
+                "hits": 16,
+                "scored": 16,
+                "accuracy": 1.0
+              },
+              "multi-hop": {
+                "hits": 15,
+                "scored": 16,
+                "accuracy": 0.938
+              },
+              "adversarial": {
+                "hits": 16,
+                "scored": 16,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 12,
+                "scored": 16,
+                "accuracy": 0.75
+              }
+            }
+          }
+        }
+      },
+      "B_small_250_50": {
+        "chunk_size": 250,
+        "overlap": 50,
+        "n_chunks": 16,
+        "retrievers": {
+          "tfidf": {
+            "accuracy": 0.762,
+            "hits": 61,
+            "scored": 80,
+            "mrr": 0.856,
+            "avg_margin": 0.084,
+            "mean_hit_score": 0.2337,
+            "mean_control_score": 0.1536,
+            "hit_control_gap": 0.0801,
+            "mean_latency_ms": 0.5,
+            "by_type": {
+              "direct": {
+                "hits": 15,
+                "scored": 16,
+                "accuracy": 0.938
+              },
+              "paraphrase": {
+                "hits": 14,
+                "scored": 16,
+                "accuracy": 0.875
+              },
+              "multi-hop": {
+                "hits": 10,
+                "scored": 16,
+                "accuracy": 0.625
+              },
+              "adversarial": {
+                "hits": 16,
+                "scored": 16,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 6,
+                "scored": 16,
+                "accuracy": 0.375
+              }
+            }
+          },
+          "bm25": {
+            "accuracy": 0.738,
+            "hits": 59,
+            "scored": 80,
+            "mrr": 0.84,
+            "avg_margin": 2.414,
+            "mean_hit_score": 7.2883,
+            "mean_control_score": 2.831,
+            "hit_control_gap": 4.4573,
+            "mean_latency_ms": 0.13,
+            "by_type": {
+              "direct": {
+                "hits": 15,
+                "scored": 16,
+                "accuracy": 0.938
+              },
+              "paraphrase": {
+                "hits": 12,
+                "scored": 16,
+                "accuracy": 0.75
+              },
+              "multi-hop": {
+                "hits": 10,
+                "scored": 16,
+                "accuracy": 0.625
+              },
+              "adversarial": {
+                "hits": 16,
+                "scored": 16,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 6,
+                "scored": 16,
+                "accuracy": 0.375
+              }
+            }
+          },
+          "sbert": {
+            "accuracy": 0.938,
+            "hits": 75,
+            "scored": 80,
+            "mrr": 0.957,
+            "avg_margin": 0.103,
+            "mean_hit_score": 0.435,
+            "mean_control_score": 0.1858,
+            "hit_control_gap": 0.2492,
+            "mean_latency_ms": 19.85,
+            "by_type": {
+              "direct": {
+                "hits": 16,
+                "scored": 16,
+                "accuracy": 1.0
+              },
+              "paraphrase": {
+                "hits": 15,
+                "scored": 16,
+                "accuracy": 0.938
+              },
+              "multi-hop": {
+                "hits": 15,
+                "scored": 16,
+                "accuracy": 0.938
+              },
+              "adversarial": {
+                "hits": 16,
+                "scored": 16,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 13,
+                "scored": 16,
+                "accuracy": 0.812
+              }
+            }
+          },
+          "hybrid": {
+            "accuracy": 0.9,
+            "hits": 72,
+            "scored": 80,
+            "mrr": 0.933,
+            "avg_margin": 0.001,
+            "mean_hit_score": 0.0325,
+            "mean_control_score": 0.0318,
+            "hit_control_gap": 0.0008,
+            "mean_latency_ms": 23.28,
+            "by_type": {
+              "direct": {
+                "hits": 16,
+                "scored": 16,
+                "accuracy": 1.0
+              },
+              "paraphrase": {
+                "hits": 15,
+                "scored": 16,
+                "accuracy": 0.938
+              },
+              "multi-hop": {
+                "hits": 15,
+                "scored": 16,
+                "accuracy": 0.938
+              },
+              "adversarial": {
+                "hits": 16,
+                "scored": 16,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 10,
+                "scored": 16,
+                "accuracy": 0.625
+              }
+            }
+          },
+          "rerank": {
+            "accuracy": 0.9,
+            "hits": 72,
+            "scored": 80,
+            "mrr": 0.94,
+            "avg_margin": 3.67,
+            "mean_hit_score": -2.0694,
+            "mean_control_score": -9.5719,
+            "hit_control_gap": 7.5025,
+            "mean_latency_ms": 837.04,
+            "by_type": {
+              "direct": {
+                "hits": 16,
+                "scored": 16,
+                "accuracy": 1.0
+              },
+              "paraphrase": {
+                "hits": 15,
+                "scored": 16,
+                "accuracy": 0.938
+              },
+              "multi-hop": {
+                "hits": 15,
+                "scored": 16,
+                "accuracy": 0.938
+              },
+              "adversarial": {
+                "hits": 16,
+                "scored": 16,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 10,
+                "scored": 16,
+                "accuracy": 0.625
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "v4_corpus_v2": {
+    "description": "Corpus-v2: 12 docs, 3,778 words, 57 questions (52 scored + 5 controls)",
+    "scored": 52,
+    "controls": 5,
+    "docs": 12,
+    "words": 3778,
+    "chunkings": {
+      "A_current_500_100": {
+        "chunk_size": 500,
+        "overlap": 100,
+        "n_chunks": 64,
+        "retrievers": {
+          "tfidf": {
+            "accuracy": 0.808,
+            "hits": 42,
+            "scored": 52,
+            "mrr": 0.884,
+            "avg_margin": 0.103,
+            "mean_hit_score": 0.2632,
+            "mean_control_score": 0.1713,
+            "hit_control_gap": 0.092,
+            "mean_latency_ms": 0.57,
+            "by_type": {
+              "direct": {
+                "hits": 23,
+                "scored": 26,
+                "accuracy": 0.885
+              },
+              "paraphrase": {
+                "hits": 13,
+                "scored": 15,
+                "accuracy": 0.867
+              },
+              "multi-hop": {
+                "hits": 2,
+                "scored": 4,
+                "accuracy": 0.5
+              },
+              "adversarial": {
+                "hits": 4,
+                "scored": 4,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 0,
+                "scored": 3,
+                "accuracy": 0.0
+              }
+            }
+          },
+          "bm25": {
+            "accuracy": 0.846,
+            "hits": 44,
+            "scored": 52,
+            "mrr": 0.907,
+            "avg_margin": 5.414,
+            "mean_hit_score": 17.6775,
+            "mean_control_score": 9.6415,
+            "hit_control_gap": 8.0361,
+            "mean_latency_ms": 0.24,
+            "by_type": {
+              "direct": {
+                "hits": 23,
+                "scored": 26,
+                "accuracy": 0.885
+              },
+              "paraphrase": {
+                "hits": 13,
+                "scored": 15,
+                "accuracy": 0.867
+              },
+              "multi-hop": {
+                "hits": 3,
+                "scored": 4,
+                "accuracy": 0.75
+              },
+              "adversarial": {
+                "hits": 4,
+                "scored": 4,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 1,
+                "scored": 3,
+                "accuracy": 0.333
+              }
+            }
+          },
+          "sbert": {
+            "accuracy": 0.904,
+            "hits": 47,
+            "scored": 52,
+            "mrr": 0.935,
+            "avg_margin": 0.061,
+            "mean_hit_score": 0.6292,
+            "mean_control_score": 0.3138,
+            "hit_control_gap": 0.3155,
+            "mean_latency_ms": 44.95,
+            "by_type": {
+              "direct": {
+                "hits": 24,
+                "scored": 26,
+                "accuracy": 0.923
+              },
+              "paraphrase": {
+                "hits": 14,
+                "scored": 15,
+                "accuracy": 0.933
+              },
+              "multi-hop": {
+                "hits": 3,
+                "scored": 4,
+                "accuracy": 0.75
+              },
+              "adversarial": {
+                "hits": 4,
+                "scored": 4,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 2,
+                "scored": 3,
+                "accuracy": 0.667
+              }
+            }
+          },
+          "hybrid": {
+            "accuracy": 0.885,
+            "hits": 46,
+            "scored": 52,
+            "mrr": 0.934,
+            "avg_margin": 0.001,
+            "mean_hit_score": 0.0326,
+            "mean_control_score": 0.0316,
+            "hit_control_gap": 0.001,
+            "mean_latency_ms": 45.7,
+            "by_type": {
+              "direct": {
+                "hits": 24,
+                "scored": 26,
+                "accuracy": 0.923
+              },
+              "paraphrase": {
+                "hits": 14,
+                "scored": 15,
+                "accuracy": 0.933
+              },
+              "multi-hop": {
+                "hits": 2,
+                "scored": 4,
+                "accuracy": 0.5
+              },
+              "adversarial": {
+                "hits": 4,
+                "scored": 4,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 2,
+                "scored": 3,
+                "accuracy": 0.667
+              }
+            }
+          },
+          "rerank": {
+            "accuracy": 0.923,
+            "hits": 48,
+            "scored": 52,
+            "mrr": 0.957,
+            "avg_margin": 3.778,
+            "mean_hit_score": 5.5691,
+            "mean_control_score": -6.1125,
+            "hit_control_gap": 11.6816,
+            "mean_latency_ms": 2472.35,
+            "by_type": {
+              "direct": {
+                "hits": 25,
+                "scored": 26,
+                "accuracy": 0.962
+              },
+              "paraphrase": {
+                "hits": 14,
+                "scored": 15,
+                "accuracy": 0.933
+              },
+              "multi-hop": {
+                "hits": 4,
+                "scored": 4,
+                "accuracy": 1.0
+              },
+              "adversarial": {
+                "hits": 4,
+                "scored": 4,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 1,
+                "scored": 3,
+                "accuracy": 0.333
+              }
+            }
+          }
+        }
+      },
+      "B_small_250_50": {
+        "chunk_size": 250,
+        "overlap": 50,
+        "n_chunks": 126,
+        "retrievers": {
+          "tfidf": {
+            "accuracy": 0.769,
+            "hits": 40,
+            "scored": 52,
+            "mrr": 0.859,
+            "avg_margin": 0.089,
+            "mean_hit_score": 0.2912,
+            "mean_control_score": 0.1838,
+            "hit_control_gap": 0.1074,
+            "mean_latency_ms": 17.71,
+            "by_type": {
+              "direct": {
+                "hits": 23,
+                "scored": 26,
+                "accuracy": 0.885
+              },
+              "paraphrase": {
+                "hits": 12,
+                "scored": 15,
+                "accuracy": 0.8
+              },
+              "multi-hop": {
+                "hits": 1,
+                "scored": 4,
+                "accuracy": 0.25
+              },
+              "adversarial": {
+                "hits": 4,
+                "scored": 4,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 0,
+                "scored": 3,
+                "accuracy": 0.0
+              }
+            }
+          },
+          "bm25": {
+            "accuracy": 0.808,
+            "hits": 42,
+            "scored": 52,
+            "mrr": 0.886,
+            "avg_margin": 4.026,
+            "mean_hit_score": 17.3659,
+            "mean_control_score": 8.5225,
+            "hit_control_gap": 8.8435,
+            "mean_latency_ms": 1.61,
+            "by_type": {
+              "direct": {
+                "hits": 23,
+                "scored": 26,
+                "accuracy": 0.885
+              },
+              "paraphrase": {
+                "hits": 14,
+                "scored": 15,
+                "accuracy": 0.933
+              },
+              "multi-hop": {
+                "hits": 1,
+                "scored": 4,
+                "accuracy": 0.25
+              },
+              "adversarial": {
+                "hits": 4,
+                "scored": 4,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 0,
+                "scored": 3,
+                "accuracy": 0.0
+              }
+            }
+          },
+          "sbert": {
+            "accuracy": 0.923,
+            "hits": 48,
+            "scored": 52,
+            "mrr": 0.962,
+            "avg_margin": 0.067,
+            "mean_hit_score": 0.6529,
+            "mean_control_score": 0.3303,
+            "hit_control_gap": 0.3226,
+            "mean_latency_ms": 57.05,
+            "by_type": {
+              "direct": {
+                "hits": 26,
+                "scored": 26,
+                "accuracy": 1.0
+              },
+              "paraphrase": {
+                "hits": 14,
+                "scored": 15,
+                "accuracy": 0.933
+              },
+              "multi-hop": {
+                "hits": 2,
+                "scored": 4,
+                "accuracy": 0.5
+              },
+              "adversarial": {
+                "hits": 4,
+                "scored": 4,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 2,
+                "scored": 3,
+                "accuracy": 0.667
+              }
+            }
+          },
+          "hybrid": {
+            "accuracy": 0.885,
+            "hits": 46,
+            "scored": 52,
+            "mrr": 0.926,
+            "avg_margin": 0.001,
+            "mean_hit_score": 0.0326,
+            "mean_control_score": 0.0311,
+            "hit_control_gap": 0.0015,
+            "mean_latency_ms": 55.55,
+            "by_type": {
+              "direct": {
+                "hits": 24,
+                "scored": 26,
+                "accuracy": 0.923
+              },
+              "paraphrase": {
+                "hits": 14,
+                "scored": 15,
+                "accuracy": 0.933
+              },
+              "multi-hop": {
+                "hits": 3,
+                "scored": 4,
+                "accuracy": 0.75
+              },
+              "adversarial": {
+                "hits": 4,
+                "scored": 4,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 1,
+                "scored": 3,
+                "accuracy": 0.333
+              }
+            }
+          },
+          "rerank": {
+            "accuracy": 0.904,
+            "hits": 47,
+            "scored": 52,
+            "mrr": 0.943,
+            "avg_margin": 3.507,
+            "mean_hit_score": 5.2713,
+            "mean_control_score": -5.9016,
+            "hit_control_gap": 11.173,
+            "mean_latency_ms": 1388.56,
+            "by_type": {
+              "direct": {
+                "hits": 25,
+                "scored": 26,
+                "accuracy": 0.962
+              },
+              "paraphrase": {
+                "hits": 14,
+                "scored": 15,
+                "accuracy": 0.933
+              },
+              "multi-hop": {
+                "hits": 3,
+                "scored": 4,
+                "accuracy": 0.75
+              },
+              "adversarial": {
+                "hits": 4,
+                "scored": 4,
+                "accuracy": 1.0
+              },
+              "ambiguous": {
+                "hits": 1,
+                "scored": 3,
+                "accuracy": 0.333
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+# rag-skills requirements
+# The eval harness (scripts/eval.py) needs NOTHING here — pure stdlib.
+# These are only for the demo API (api/main.py).
+fastapi>=0.110
+uvicorn>=0.29
+
+# Optional: enables the SBERT + cross-encoder rerank paths in scripts/eval.py
+# (needs a model download the first time it runs — never automatic).
+# sentence-transformers>=2.2
